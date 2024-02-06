@@ -19,7 +19,7 @@ app.use(userRoutes);
 app.use(exerciseRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("API is running...");
 });
 
 app.listen(PORT, () => {
