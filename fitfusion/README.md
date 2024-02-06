@@ -1,6 +1,6 @@
 # fitfusion
 
-your personalised fitness application
+A new Flutter project.
 
 ## Getting Started
 
