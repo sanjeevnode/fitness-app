@@ -1,10 +1,21 @@
+import 'package:fitfusion/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class UserProvider extends ChangeNotifier {
-  String get userId => '';
+  User _user = User(
+    name: "",
+    age: 0,
+    height: 0,
+    weight: 0.0,
+    email: "",
+    gender: "",
+    workouts: [],
+  );
 
-  void setUserId(String userId) {
-    userId = userId;
+  User get user => _user;
+
+  void setUser(String user) {
+    _user = User.fromJson(user);
     notifyListeners();
   }
 }

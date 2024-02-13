@@ -33,9 +33,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'FitFusion',
       debugShowCheckedModeBanner: false,
-      home: Provider.of<UserProvider>(context).userId.isNotEmpty
-          ? const HomeScreen()
-          : const GetStarted(),
+      home: 1 == 2 ? const HomeScreen() : const GetStarted(),
     );
   }
 }
