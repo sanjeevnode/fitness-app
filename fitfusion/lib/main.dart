@@ -1,6 +1,6 @@
 import 'package:fitfusion/provider/providers.dart';
-import 'package:fitfusion/screens/getstarted/get_started.dart';
-import 'package:fitfusion/screens/home_screen.dart';
+
+import 'package:fitfusion/screens/splash_screen/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +33,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'FitFusion',
       debugShowCheckedModeBanner: false,
-      home: 1 == 2 ? const HomeScreen() : const GetStarted(),
+      theme: ThemeData(
+        fontFamily: 'WorkSans',
+      ),
+      home: const SplashScreen(),
     );
   }
 }
