@@ -27,8 +27,8 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     workouts: {
-      type: Array,
-      default: [],
+      type: Object,
+      default: {},
     },
   },
   {

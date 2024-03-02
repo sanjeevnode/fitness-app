@@ -1,10 +1,18 @@
 import 'package:fitfusion/constant.dart';
-import 'package:fitfusion/custom.dart';
 import 'package:fitfusion/screens/home/about.dart';
+import 'package:fitfusion/shared/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
-class SetProfile extends StatelessWidget {
+class SetProfile extends StatefulWidget {
   const SetProfile({super.key});
+
+  @override
+  State<SetProfile> createState() => _SetProfileState();
+}
+
+class _SetProfileState extends State<SetProfile> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +74,10 @@ class SetProfile extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const Field(text: "Enter your name", icon: Icons.person),
+              CustomTextField(
+                controller: nameController,
+                hintText: "Name",
+              ),
               const SizedBox(height: 20),
               const Text(
                 'Gender',
@@ -77,16 +88,31 @@ class SetProfile extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const Field(text: "Male/Female", icon: Icons.person),
+              CustomTextField(
+                controller: genderController,
+                hintText: "Gender",
+              ),
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const About(),
-                    ),
-                  );
+                  if (nameController.text.isNotEmpty &&
+                      genderController.text.isNotEmpty) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => About(
+                          name: nameController.text,
+                          gender: genderController.text,
+                        ),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please fill all the fields'),
+                      ),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: popColors,
